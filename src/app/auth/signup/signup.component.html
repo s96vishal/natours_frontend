@@ -1,0 +1,75 @@
+<main class="main">
+    <div class="login-form">
+        <h2 class="heading-secondary ma-bt-lg">Sign Up for Natours</h2>
+        <form class="form" (ngSubmit)="onSubmit()" [formGroup]="signupForm">
+            <p>{{status}}</p>
+            <div class="form__group">
+                <label class="form__label" for="username">Name</label>
+                <input 
+                formControlName ="name" 
+                class="form__input" 
+                id="name" 
+                type="text" 
+                placeholder="your name"/>
+
+            </div>
+            <div class="errorValidate" *ngIf="signupForm.get('name').errors && signupForm.get('name').touched"><p>Name is required</p></div>
+            <div class="form__group">
+                <label class="form__label" for="username">Username</label>
+                <input 
+                formControlName ="username" 
+                class="form__input" 
+                id="username" 
+                type="text" 
+                placeholder="your username"/>
+            </div>
+            <div class="errorValidate" *ngIf="signupForm.get('username').errors && signupForm.get('username').touched"><p>Username is required</p></div>
+            <div class="form__group">
+                <label class="form__label" for="email">Email address</label>
+                <input 
+                formControlName="email" 
+                class="form__input" 
+                id="email" 
+                type="email"
+                placeholder="you@example.com"/>
+            </div>
+            <p *ngIf="status === 'PENDING' && signupForm.get('email').touched">Checking for uniqueness...</p>
+            <div class="errorValidate" *ngIf="signupForm.get('email').errors && signupForm.get('email').touched">
+                <p *ngIf="signupForm.get('email').errors.email ">Email is required</p>
+                <p *ngIf="signupForm.get('email').errors.duplicateUser ">Email already exists</p>
+                
+            </div>
+            <div class="form__group ma-bt-md">
+                <label class="form__label" for="password">Password</label>
+                <input 
+                formControlName="password"
+                class="form__input" 
+                id="password" 
+                type="password" 
+                placeholder="••••••••"/>
+            </div>
+            <div class="errorValidate" *ngIf="signupForm.get('password').errors && signupForm.get('password').touched">
+                <p *ngIf="signupForm.get('password').errors?.required">Password is required</p>
+                <p *ngIf="signupForm.get('password').errors?.minlength">Password must be minimum 8 characters</p>
+                
+            </div>
+            <div class="form__group ma-bt-md">
+                <label class="form__label" for="password">Confirm Password</label>
+                <input 
+                formControlName="passwordConfirm" 
+                class="form__input" 
+                id="passwordConfirm" 
+                type="password" 
+                placeholder="••••••••"/>
+            </div>
+            <div class="errorValidate" *ngIf="signupForm.errors?.passwordMatch"><p>Password must match</p></div>
+            <div class="form__group">
+                <button 
+                class="btn btn--green"
+                [ngClass]="{disabled: signupForm.invalid}" 
+                [disabled]="!signupForm.valid">{{createAccount}}</button>
+            </div>
+        </form>
+    </div>
+</main>
+<!-- [disabled]="!signupForm.valid" -->

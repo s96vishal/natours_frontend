@@ -1,0 +1,37 @@
+<main class="main">
+    <div class="login-form">
+        <h2 class="heading-secondary ma-bt-lg">Log into your account</h2>
+        <form class="form" (ngSubmit) = "onSubmit(loginForm)" #loginForm="ngForm">
+            <div class="form__group">
+                <label class="form__label" for="email">Email address</label>
+                <input 
+                class="form__input" 
+                name="email"
+                ngModel="email"
+                id="email" 
+                type="email" 
+                #email="ngModel"
+                placeholder="you@example.com" 
+                required="required"
+                email />
+            </div>
+            <div class="errorValidate"><p *ngIf="(email.dirty||email.touched) && email.invalid">Email required</p></div>
+            <div class="form__group ma-bt-md">
+                <label class="form__label" for="password">Password</label>
+                <input 
+                class="form__input" 
+                id="password" 
+                name="password"
+                ngModel
+                #password="ngModel"
+                type="password" 
+                placeholder="••••••••" 
+                required="required" 
+                minlength="8" /></div>
+                <div class="errorValidate" *ngIf="(password.dirty||password.touched) && password.invalid">
+                    <p *ngIf="password.errors?.minlength">password must be 8 characters</p>
+                </div>
+            <div class="form__group"><button class="btn btn--green" [disabled]="!loginForm.valid">Login</button></div>
+        </form>
+    </div>
+</main>

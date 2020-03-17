@@ -84,9 +84,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css"
             ],
-            "scripts": []
+            "scripts": [
+              "https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js"
+            ]
           }
         },
         "lint": {

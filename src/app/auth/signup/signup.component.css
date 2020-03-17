@@ -1,0 +1,12 @@
+/* .ng-invalid:not(form)  {
+    border-left: 5px solid #f64b3c;
+    red } */
+
+  .disabled{
+    background-color: #a94442;
+    color:white;
+  }
+  .errorValidate{
+    color:red;
+    text-align: right;
+  }
